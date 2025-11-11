@@ -1,287 +1,202 @@
-# Command Reference
+# Simple Command Guide
 
-Complete reference for all commands used in the Fruit & Vegetable Classification project.
+Easy-to-use commands for the Fruit & Vegetable Classification project.
 
-## Installation Commands
+## First Time Setup
 
-### Install All Dependencies
+### Step 1: Go to the local folder
 ```bash
-pip install tensorflow>=2.10.0 numpy>=1.21.0 Pillow>=9.0.0 matplotlib>=3.5.0 scikit-learn>=1.0.0 gradio>=3.50.0 seaborn --no-cache-dir
+cd local
 ```
 
-### Install from Requirements File
+### Step 2: Install everything
 ```bash
 pip install -r requirements.txt
 ```
 
-### Install Without Cache (Memory-Constrained Systems)
-```bash
-pip install -r requirements.txt --no-cache-dir
-```
+That's it! You're ready to go.
 
-### Upgrade Pip
-```bash
-python -m pip install --upgrade pip
-```
+## Running the App
 
-## Execution Commands
-
-### Run Web Interface
+### Start the web interface
 ```bash
+cd local
 python run_app.py
 ```
-Starts the classification interface at http://127.0.0.1:7860
 
-### Train Model
+Then open your browser to: http://127.0.0.1:7860
+
+### Stop the app
+Press `Ctrl + C` in the terminal
+
+## Training a Model
+
+### Start training
 ```bash
+cd local
 python train_model.py
 ```
-Initiates training process using dataset in `dataset/` directory
 
-## Verification Commands
+Wait for training to complete (30-60 minutes with GPU, 2-4 hours with CPU)
 
-### Check Python Version
+## Check if Everything Works
+
+### Check Python version
 ```bash
 python --version
 ```
+Should show Python 3.8 or higher
 
-### Verify TensorFlow Installation
+### Check if TensorFlow is installed
 ```bash
-python -c "import tensorflow as tf; print(tf.__version__)"
+python -c "import tensorflow; print('TensorFlow is installed!')"
 ```
 
-### Check GPU Availability
+### Check if you have a GPU
 ```bash
-python -c "import tensorflow as tf; print(tf.config.list_physical_devices('GPU'))"
+python -c "import tensorflow as tf; print('GPU available:', len(tf.config.list_physical_devices('GPU')) > 0)"
 ```
 
-### List Installed Packages
+### See all installed packages
 ```bash
 pip list
 ```
 
-### Verify Model File
-```bash
-dir FV.h5
-```
-(Windows) or `ls -lh FV.h5` (Linux/Mac)
+## Common Problems & Solutions
 
-### Check Dataset Structure
+### Problem: "Module not found" error
+**Solution:** Install dependencies again
 ```bash
-dir dataset\train
-dir dataset\validation
+cd local
+pip install -r requirements.txt
 ```
 
-## Maintenance Commands
+### Problem: Port already in use
+**Solution:** Close other programs using port 7860, or restart your computer
 
-### Clear Pip Cache
+### Problem: Out of memory during training
+**Solution:** Close other programs, or reduce batch size in train_model.py
+
+## If Something Breaks
+
+### Reinstall everything
 ```bash
-pip cache purge
-```
-
-### Remove Virtual Environment
-```bash
-rmdir /s /q venv
-```
-(Windows) or `rm -rf venv` (Linux/Mac)
-
-### Clean Training Outputs
-```bash
-del best_model.h5 training_history.png sample_images.png test_predictions.png
-```
-
-## Troubleshooting Commands
-
-### Reinstall TensorFlow
-```bash
-pip uninstall tensorflow
-pip install tensorflow>=2.10.0 --no-cache-dir
-```
-
-### Force Reinstall All Dependencies
-```bash
-pip install --upgrade --force-reinstall tensorflow numpy pillow matplotlib scikit-learn gradio
-```
-
-### Fix Import Errors
-```bash
+cd local
 pip uninstall -r requirements.txt -y
-pip install -r requirements.txt --no-cache-dir
+pip install -r requirements.txt
 ```
 
-## Testing Commands
-
-### Test Model Loading
+### Start fresh
 ```bash
-python -c "from tensorflow.keras.models import load_model; model = load_model('FV.h5'); print('Model loaded successfully')"
+cd local
+pip install tensorflow numpy pillow matplotlib scikit-learn gradio
 ```
 
-### Test Gradio Installation
+## Test Your Setup
+
+### Test if model file exists
 ```bash
-python -c "import gradio as gr; print(f'Gradio version: {gr.__version__}')"
+cd models
+dir FV.h5
+```
+Should show the file (about 17 MB)
+
+### Test if Gradio works
+```bash
+python -c "import gradio; print('Gradio is ready!')"
 ```
 
-### Test Image Processing
+## Complete Workflows
+
+### First time using the project
 ```bash
-python -c "from PIL import Image; import numpy as np; print('PIL and NumPy functional')"
-```
+# 1. Go to local folder
+cd local
 
-## Network Commands
+# 2. Install everything
+pip install -r requirements.txt
 
-### Check Port Availability
-```bash
-netstat -ano | findstr :7860
-```
-
-### Terminate Process on Port
-```bash
-# Find process ID
-netstat -ano | findstr :7860
-
-# Kill process (replace <PID> with actual process ID)
-taskkill /PID <PID> /F
-```
-
-## Dataset Commands
-
-### Count Training Images (Windows)
-```bash
-for /d %d in (dataset\train\*) do @echo %d && dir "%d\*.*" /b | find /c /v ""
-```
-
-### Verify Dataset Integrity
-```bash
-python -c "import os; print('Train classes:', len(os.listdir('dataset/train'))); print('Val classes:', len(os.listdir('dataset/validation')))"
-```
-
-## Common Workflows
-
-### Initial Setup Workflow
-```bash
-# Verify Python
-python --version
-
-# Install dependencies
-pip install -r requirements.txt --no-cache-dir
-
-# Verify installation
-python -c "import tensorflow as tf; print(tf.__version__)"
-
-# Run application
+# 3. Run the app
 python run_app.py
+
+# 4. Open browser to http://127.0.0.1:7860
 ```
 
-### Training Workflow
+### Training your own model
 ```bash
-# Verify dataset
-dir dataset\train
-dir dataset\validation
+# 1. Make sure dataset is ready
+# (Should have dataset/train/ and dataset/validation/ folders)
 
-# Check GPU
-python -c "import tensorflow as tf; print(tf.config.list_physical_devices('GPU'))"
+# 2. Go to local folder
+cd local
 
-# Start training
+# 3. Start training
 python train_model.py
 
-# Use trained model
+# 4. Wait for it to finish
+# 5. Run the app with your new model
 python run_app.py
 ```
 
-### Update Workflow
-```bash
-# Update pip
-python -m pip install --upgrade pip
+## Customization
 
-# Update packages
-pip install --upgrade tensorflow numpy pillow matplotlib scikit-learn gradio
-
-# Verify updates
-pip list
-```
-
-## Configuration Modifications
-
-### Change Server Port
-Edit `run_app.py`:
+### Change port (if 7860 is busy)
+Open `local/run_app.py` and find this line:
 ```python
-demo.launch(
-    server_name="127.0.0.1",
-    server_port=7861,  # Change port number
-    share=False,
-    inbrowser=True
-)
+server_port=7860
 ```
+Change `7860` to any other number like `8080`
 
-### Adjust Training Parameters
-Edit `train_model.py`:
+### Make training faster (less accurate)
+Open `local/train_model.py` and change:
 ```python
-BATCH_SIZE = 16    # Reduce for memory constraints
-EPOCHS = 10        # Reduce for faster training
-LEARNING_RATE = 0.0001
+EPOCHS = 10  # Change from 20 to 10
 ```
 
-### Resume Training from Checkpoint
-Edit `train_model.py`, add after model construction:
+### Make training use less memory
+Open `local/train_model.py` and change:
 ```python
-model = load_model('best_model.h5')
+BATCH_SIZE = 8  # Change from 32 to 8
 ```
 
-## Emergency Recovery
+## Emergency: Nothing Works!
 
-### Complete Reset
+### Nuclear option - reinstall everything
 ```bash
-# Remove virtual environment
-rmdir /s /q venv
-
-# Clear cache
-pip cache purge
-
-# Fresh installation
-pip install tensorflow numpy pillow matplotlib scikit-learn gradio seaborn --no-cache-dir
-
-# Test
-python run_app.py
+cd local
+pip uninstall tensorflow numpy pillow matplotlib scikit-learn gradio -y
+pip install -r requirements.txt
 ```
 
-### Port Conflict Resolution
-```bash
-# Identify process
-netstat -ano | findstr :7860
+### Still not working?
+1. Restart your computer
+2. Try the commands again
+3. Check if you have Python 3.8 or higher: `python --version`
 
-# Terminate process
-taskkill /PID <PID> /F
+## Tips
 
-# Restart application
-python run_app.py
-```
+### During training, you'll see:
+- Progress bar showing epochs
+- Accuracy numbers (higher is better)
+- Loss numbers (lower is better)
+- Files created: `training_history.png`, `sample_images.png`, `test_predictions.png`
 
-### Model Verification
-```bash
-# Check file existence and size
-dir FV.h5
+### Monitor your computer
+Press `Ctrl + Shift + Esc` to open Task Manager and watch:
+- CPU usage
+- RAM usage
+- GPU usage (if you have one)
 
-# Verify model loads correctly
-python -c "from tensorflow.keras.models import load_model; load_model('FV.h5')"
-```
+## Quick Reference
 
-## Performance Monitoring
+| What you want to do | Command |
+|---------------------|----------|
+| Install everything | `cd local` then `pip install -r requirements.txt` |
+| Run the app | `cd local` then `python run_app.py` |
+| Train a model | `cd local` then `python train_model.py` |
+| Stop the app | Press `Ctrl + C` |
+| Check Python version | `python --version` |
 
-### Monitor Training Progress
-Training metrics are displayed in real-time during execution. Generated files include:
-- `training_history.png` - Training and validation curves
-- `sample_images.png` - Sample training data
-- `test_predictions.png` - Model predictions on test data
+---
 
-### Check System Resources
-```bash
-# Windows Task Manager: Ctrl+Shift+Esc
-# Monitor CPU, RAM, and GPU usage during training
-```
-
-## Additional Notes
-
-- All commands assume execution from the project root directory
-- Windows commands are shown; Linux/Mac equivalents may differ slightly
-- GPU commands require CUDA-compatible hardware and drivers
-- Training commands require properly structured dataset
-- Port 7860 is default; modify if conflicts occur
+**Remember**: Always run commands from the `local/` folder!
