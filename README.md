@@ -61,12 +61,8 @@ pip install -r requirements.txt
 
 All documentation is in the `docs/` folder:
 
-- [START_HERE.md](docs/START_HERE.md) - Quick start guide
 - [README.md](docs/README.md) - Complete project overview
 - [COMMANDS.md](docs/COMMANDS.md) - All commands
-- [RUN_LOCALLY.md](docs/RUN_LOCALLY.md) - Installation guide
-- [TRAINING_GUIDE.md](docs/TRAINING_GUIDE.md) - Training instructions
-- [QUICK_REFERENCE.md](docs/QUICK_REFERENCE.md) - Quick reference
 
 ## System Requirements
 
