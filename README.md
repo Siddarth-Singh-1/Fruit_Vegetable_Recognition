@@ -37,8 +37,7 @@ pip install -r requirements.txt
 │
 ├── docs/               # Documentation
 │   ├── README.md       # Detailed project overview
-│   ├── START_HERE.md   # Getting started guide
-│   └── ...             # Additional guides
+│   ├── COMMANDS.md     # Getting Commands guide
 │
 ├── notebooks/          # Jupyter notebooks
 │   ├── Fruit_Vegetable_Recognition_Colab.ipynb  # Training notebook
