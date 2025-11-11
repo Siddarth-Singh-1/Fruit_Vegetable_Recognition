@@ -108,6 +108,3 @@ dataset/
 - Adesh Srivastava (202310101360181)
 - Vikash Maurya (202310101360194)
 
-## License
-
-MIT License - Free for educational and commercial use
