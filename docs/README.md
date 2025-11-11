@@ -142,6 +142,3 @@ pip install -r requirements.txt
 - Model file size: approximately 17 MB
 - Inference speed: Real-time predictions on standard hardware
 
-## License
-
-MIT License - Free to use for educational and commercial purposes.
