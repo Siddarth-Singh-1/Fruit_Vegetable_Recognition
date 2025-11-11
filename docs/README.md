@@ -65,9 +65,6 @@ For detailed commands and troubleshooting, see [COMMANDS.md](COMMANDS.md).
 ├── COMMANDS.md                               # All commands reference
 ├── requirements.txt                          # Python dependencies
 ├── README.md                                 # Main documentation
-├── RUN_LOCALLY.md                            # Local PC setup guide
-├── TRAINING_GUIDE.md                         # Training guide
-├── QUICK_REFERENCE.md                        # Quick reference
 ├── Fruit_Vegetable_Recognition_Colab.ipynb  # Colab training notebook
 ├── Fruit_Vegetable_Classifier_UI.ipynb      # Colab UI notebook
 └── dataset/                                  # Dataset folder
