@@ -104,7 +104,7 @@ dataset/
 
 ## Team
 
-- Siddart Singh (202310101360182)
+- Siddarth Singh (202310101360182)
 - Adesh Srivastava (202310101360181)
 - Vikash Maurya (202310101360194)
 
